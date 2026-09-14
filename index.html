@@ -263,31 +263,90 @@
   }
   .bin-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:28px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:22px;
   }
   .bin-card{
     border:1px solid var(--line);
     background:var(--panel);
   }
-  .filmstrip{
-    height:150px;
+  /* video card media */
+  .bin-media{
     position:relative;
-    background:
-      repeating-linear-gradient(90deg, transparent 0 6px, var(--bg) 6px 8px),
-      linear-gradient(135deg,#1c2b27,#0f1614);
+    aspect-ratio:9/16;
+    background:#0f1614;
     border-bottom:1px solid var(--line);
+    overflow:hidden;
+    cursor:pointer;
   }
-  .filmstrip::before,.filmstrip::after{
-    content:"";
+  .bin-media video{
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .bin-media .play-badge{
     position:absolute;
-    left:0;right:0;
-    height:12px;
-    background-image:repeating-linear-gradient(90deg, var(--bg) 0 8px, transparent 8px 16px);
-    background-color:#000;
+    inset:0;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg,transparent 55%,rgba(10,15,14,.7));
+    opacity:0;
+    transition:opacity .25s;
   }
-  .filmstrip::before{top:0;}
-  .filmstrip::after{bottom:0;}
+  .bin-media:hover .play-badge,.bin-media:focus-visible .play-badge{opacity:1;}
+  .play-badge span{
+    border:1.5px solid var(--teal);
+    color:var(--teal);
+    background:rgba(10,15,14,.55);
+    padding:10px 18px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+  .bin-media .dur-chip{
+    position:absolute;top:12px;right:12px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    color:var(--cream);
+    background:rgba(10,15,14,.75);
+    border:1px solid var(--line);
+    padding:4px 8px;
+  }
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;inset:0;
+    background:rgba(6,9,9,.94);
+    z-index:100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:32px 4vw 80px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox video{
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    border:1px solid var(--line);
+    background:#000;
+  }
+  .lightbox .close{
+    position:absolute;
+    top:22px;right:4vw;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:9px 14px;
+    cursor:pointer;
+  }
+  .lightbox .close:hover{color:var(--teal);border-color:var(--teal);}
+
   .bin-body{padding:22px 22px 26px;}
   .bin-body .ph{color:var(--teal);}
   .bin-body h3{font-size:17px;font-weight:600;margin:8px 0 6px;}
@@ -552,42 +611,110 @@
 <section id="trabajos">
   <div class="eyebrow mono">01:35 — TRABAJOS DESTACADOS</div>
   <h2 class="display">DEL BIN DE<br>PROYECTOS</h2>
-  <p class="bin-note">Espacio de ejemplo — reemplaza cada tarjeta con tus propios proyectos, miniaturas y enlaces.</p>
+  <p class="bin-note">Haz clic en cualquier tarjeta para ver el video completo.</p>
   <div class="bin-grid">
     <div class="bin-card">
-      <div class="filmstrip"></div>
+      <div class="bin-media" role="button" tabindex="0"
+           data-full="videos/herramientas-agro.mp4"
+           data-poster="videos/herramientas-agro.jpg"
+           aria-label="Reproducir: Herramientas Agro">
+        <video src="videos/herramientas-agro-preview.mp4"
+               poster="videos/herramientas-agro.jpg"
+               autoplay muted loop playsinline preload="metadata"></video>
+        <span class="dur-chip">00:46</span>
+        <span class="play-badge"><span>▶ Ver completo</span></span>
+      </div>
       <div class="bin-body">
-        <span class="ph mono">[ CLIENTE / MARCA ]</span>
-        <h3>[Nombre del proyecto]</h3>
-        <p>[Añade una breve descripción del reto y el resultado del video.]</p>
-        <div class="meta mono"><span>00:00:32</span><span>[Tipo de proyecto]</span></div>
+        <span class="ph mono">[ AGROFARBEF ]</span>
+        <h3>Herramientas Agro</h3>
+        <p>Reel vertical para tienda de herramientas: recorrido por el punto de venta con presentadora
+          en cámara, subtítulos quemados y cierre con animación de marca.</p>
+        <div class="meta mono"><span>00:00:46</span><span>Reel de marca</span></div>
       </div>
     </div>
     <div class="bin-card">
-      <div class="filmstrip"></div>
+      <div class="bin-media" role="button" tabindex="0"
+           data-full="videos/moonglow.mp4"
+           data-poster="videos/moonglow.jpg"
+           aria-label="Reproducir: Moonglow">
+        <video src="videos/moonglow-preview.mp4" poster="videos/moonglow.jpg"
+               autoplay muted loop playsinline preload="metadata"></video>
+        <span class="dur-chip">00:29</span>
+        <span class="play-badge"><span>▶ Ver completo</span></span>
+      </div>
       <div class="bin-body">
         <span class="ph mono">[ CLIENTE / MARCA ]</span>
-        <h3>[Nombre del proyecto]</h3>
+        <h3>Moonglow</h3>
         <p>[Añade una breve descripción del reto y el resultado del video.]</p>
-        <div class="meta mono"><span>00:01:10</span><span>[Tipo de proyecto]</span></div>
+        <div class="meta mono"><span>00:00:29</span><span>[Tipo de proyecto]</span></div>
       </div>
     </div>
     <div class="bin-card">
-      <div class="filmstrip"></div>
+      <div class="bin-media" role="button" tabindex="0"
+           data-full="videos/imagen-oral-lengua.mp4"
+           data-poster="videos/imagen-oral-lengua.jpg"
+           aria-label="Reproducir: Imagen Oral">
+        <video src="videos/imagen-oral-lengua-preview.mp4" poster="videos/imagen-oral-lengua.jpg"
+               autoplay muted loop playsinline preload="metadata"></video>
+        <span class="dur-chip">00:33</span>
+        <span class="play-badge"><span>▶ Ver completo</span></span>
+      </div>
       <div class="bin-body">
         <span class="ph mono">[ CLIENTE / MARCA ]</span>
-        <h3>[Nombre del proyecto]</h3>
+        <h3>Imagen Oral</h3>
         <p>[Añade una breve descripción del reto y el resultado del video.]</p>
-        <div class="meta mono"><span>00:00:48</span><span>[Tipo de proyecto]</span></div>
+        <div class="meta mono"><span>00:00:33</span><span>[Tipo de proyecto]</span></div>
       </div>
     </div>
     <div class="bin-card">
-      <div class="filmstrip"></div>
+      <div class="bin-media" role="button" tabindex="0"
+           data-full="videos/antojo-chorros.mp4"
+           data-poster="videos/antojo-chorros.jpg"
+           aria-label="Reproducir: Antojo Chorros">
+        <video src="videos/antojo-chorros-preview.mp4" poster="videos/antojo-chorros.jpg"
+               autoplay muted loop playsinline preload="metadata"></video>
+        <span class="dur-chip">00:22</span>
+        <span class="play-badge"><span>▶ Ver completo</span></span>
+      </div>
       <div class="bin-body">
         <span class="ph mono">[ CLIENTE / MARCA ]</span>
-        <h3>[Nombre del proyecto]</h3>
+        <h3>Antojo Chorros</h3>
         <p>[Añade una breve descripción del reto y el resultado del video.]</p>
-        <div class="meta mono"><span>00:02:03</span><span>[Tipo de proyecto]</span></div>
+        <div class="meta mono"><span>00:00:22</span><span>[Tipo de proyecto]</span></div>
+      </div>
+    </div>
+    <div class="bin-card">
+      <div class="bin-media" role="button" tabindex="0"
+           data-full="videos/emotors-julio24.mp4"
+           data-poster="videos/emotors-julio24.jpg"
+           aria-label="Reproducir: E-Motors">
+        <video src="videos/emotors-julio24-preview.mp4" poster="videos/emotors-julio24.jpg"
+               autoplay muted loop playsinline preload="metadata"></video>
+        <span class="dur-chip">01:01</span>
+        <span class="play-badge"><span>▶ Ver completo</span></span>
+      </div>
+      <div class="bin-body">
+        <span class="ph mono">[ CLIENTE / MARCA ]</span>
+        <h3>E-Motors</h3>
+        <p>[Añade una breve descripción del reto y el resultado del video.]</p>
+        <div class="meta mono"><span>00:01:01</span><span>[Tipo de proyecto]</span></div>
+      </div>
+    </div>
+    <div class="bin-card">
+      <div class="bin-media" role="button" tabindex="0"
+           data-full="videos/reel-camilo.mp4"
+           data-poster="videos/reel-camilo.jpg"
+           aria-label="Reproducir: Reel Camilo">
+        <video src="videos/reel-camilo-preview.mp4" poster="videos/reel-camilo.jpg"
+               autoplay muted loop playsinline preload="metadata"></video>
+        <span class="dur-chip">01:33</span>
+        <span class="play-badge"><span>▶ Ver completo</span></span>
+      </div>
+      <div class="bin-body">
+        <span class="ph mono">[ CLIENTE / MARCA ]</span>
+        <h3>Reel Camilo</h3>
+        <p>[Añade una breve descripción del reto y el resultado del video.]</p>
+        <div class="meta mono"><span>00:01:33</span><span>[Tipo de proyecto]</span></div>
       </div>
     </div>
   </div>
@@ -638,6 +765,12 @@
   <span>© 2026 JHOAN LASTRE MÉNDEZ</span>
   <span>FIN — 00:03:10:00</span>
 </footer>
+
+<!-- ============ LIGHTBOX DE VIDEO ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Reproductor de video">
+  <button class="close" id="lbClose" type="button">Cerrar ✕</button>
+  <video id="lbVideo" controls preload="none" playsinline></video>
+</div>
 
 <!-- ============ TIMELINE NAV (signature element) ============ -->
 <nav class="timeline-nav mono" aria-label="Navegación por secciones">
@@ -713,6 +846,61 @@
       tc.textContent = `00:${pad(m)}:${pad(s)}:${pad(frames)}`;
     }, 42);
   }
+
+  // ---------- previews: reproducir solo lo que esta en pantalla ----------
+  const previews = document.querySelectorAll('.bin-media video');
+  if('IntersectionObserver' in window && !reduceMotion){
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        const v = entry.target;
+        if(entry.isIntersecting){
+          v.play().catch(()=>{}); // si el navegador lo bloquea, queda el poster
+        } else {
+          v.pause();
+        }
+      });
+    }, {rootMargin:'200px 0px', threshold:0.25});
+    previews.forEach(v=>io.observe(v));
+  } else {
+    // sin observer o con movimiento reducido: dejar el poster fijo
+    previews.forEach(v=>{v.removeAttribute('autoplay'); v.pause();});
+  }
+
+  // ---------- lightbox de video ----------
+  const lb = document.getElementById('lightbox');
+  const lbVideo = document.getElementById('lbVideo');
+  let lastTrigger = null;
+
+  function openLightbox(media){
+    lastTrigger = media;
+    lbVideo.src = media.dataset.full;
+    lbVideo.poster = media.dataset.poster || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbVideo.play().catch(()=>{});
+  }
+
+  function closeLightbox(){
+    lb.classList.remove('open');
+    lbVideo.pause();
+    lbVideo.removeAttribute('src'); // libera la descarga en curso
+    lbVideo.load();
+    document.body.style.overflow = '';
+    if(lastTrigger) lastTrigger.focus();
+  }
+
+  document.querySelectorAll('.bin-media[data-full]').forEach(media=>{
+    media.addEventListener('click', ()=> openLightbox(media));
+    media.addEventListener('keydown', e=>{
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(media); }
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e=>{ if(e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+  });
 
   // waveform bars
   const wf = document.getElementById('waveform');
