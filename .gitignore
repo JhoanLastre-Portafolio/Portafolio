@@ -1,7 +1,10 @@
-# Másteres de video sin comprimir — se quedan solo en el PC.
-# Al repo suben únicamente los archivos ya optimizados de videos/
+# Másteres sin optimizar — se quedan solo en el PC.
+# Al repo suben únicamente los archivos ya procesados de videos/ e img/
 /*.mp4
 /*.mov
 /*.avi
 /*.mkv
+/*.jpg
+/*.jpeg
+/*.png
 /masters/
