@@ -119,62 +119,23 @@
   }
   .hero .role b{color:var(--cream);font-weight:600;}
 
-  /* hero: texto + retrato */
-  .hero-inner{
-    display:grid;
-    grid-template-columns:1.15fr 0.85fr;
-    gap:6vw;
-    align-items:center;
-    width:100%;
-  }
-  .hero-photo{
-    position:relative;
-    margin:0;
-    aspect-ratio:3/4;
-    max-height:64vh;
-    justify-self:end;
-    width:100%;
-  }
-  .hero-photo img{
-    width:100%;height:100%;
-    object-fit:cover;
-    object-position:center 22%;
-    display:block;
-    border:1px solid var(--line);
-    filter:saturate(0.9) contrast(1.03);
-  }
-  .photo-corner{
-    position:absolute;
-    width:18px;height:18px;
-    border-color:var(--teal);
-  }
-  .photo-corner.tl{top:-1px;left:-1px;border-top:2px solid;border-left:2px solid;}
-  .photo-corner.tr{top:-1px;right:-1px;border-top:2px solid;border-right:2px solid;}
-  .photo-corner.bl{bottom:-1px;left:-1px;border-bottom:2px solid;border-left:2px solid;}
-  .photo-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid;border-right:2px solid;}
-
   .tc-readout{
     position:absolute;
-    bottom:14px;
-    right:14px;
+    bottom:64px;
+    right:8vw;
     text-align:right;
-    background:rgba(10,15,14,0.78);
-    border:1px solid var(--line);
-    padding:8px 12px;
   }
   .tc-readout .tc{
-    display:block;
-    font-size:20px;
+    font-size:28px;
     letter-spacing:0.06em;
     color:var(--teal);
   }
   .tc-readout .lbl{
-    display:block;
-    font-size:9.5px;
+    font-size:11px;
     color:var(--muted);
     letter-spacing:0.14em;
     text-transform:uppercase;
-    margin-top:3px;
+    margin-top:4px;
   }
   .scroll-cue{
     position:absolute;
@@ -529,10 +490,6 @@
 
   @media(max-width:820px){
     section{padding:90px 6vw;}
-    .hero{height:auto;min-height:0;padding:110px 6vw 90px;}
-    .hero-inner{grid-template-columns:1fr;gap:34px;}
-    .hero-photo{max-height:46vh;width:72%;justify-self:start;}
-    .scroll-cue{position:static;margin-top:34px;}
     .about-grid,.content-wrap{grid-template-columns:1fr;gap:36px;}
     .clip{grid-template-columns:70px 1fr;}
     .clip .tag{display:none;}
@@ -554,27 +511,15 @@
     <div class="corner tl"></div><div class="corner tr"></div>
     <div class="corner bl"></div><div class="corner br"></div>
   </div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="rec-row"><span class="rec-dot"></span> REC · BUCARAMANGA, CO</div>
-      <h1 class="display">JHOAN<br>LASTRE <span>MÉNDEZ</span></h1>
-      <p class="role">Editor de video, realizador y creador de contenido. Convierto la idea de tu
-        marca en un video con ritmo, color y estructura — del guion a la exportación final.</p>
-    </div>
-    <figure class="hero-photo">
-      <img src="img/jhoan.jpg"
-           srcset="img/jhoan-sm.jpg 550w, img/jhoan.jpg 1100w"
-           sizes="(max-width:820px) 70vw, 32vw"
-           alt="Retrato de Jhoan Lastre Méndez en estudio" width="1100" height="1467">
-      <span class="photo-corner tl"></span><span class="photo-corner tr"></span>
-      <span class="photo-corner bl"></span><span class="photo-corner br"></span>
-      <figcaption class="tc-readout">
-        <span class="tc mono" id="tcCounter">00:00:00:00</span>
-        <span class="lbl">TIMELINE / PORTAFOLIO</span>
-      </figcaption>
-    </figure>
-  </div>
+  <div class="rec-row"><span class="rec-dot"></span> REC · BUCARAMANGA, CO</div>
+  <h1 class="display">JHOAN<br>LASTRE <span>MÉNDEZ</span></h1>
+  <p class="role">Editor de video, realizador y creador de contenido. Convierto la idea de tu
+    marca en un video con ritmo, color y estructura — del guion a la exportación final.</p>
   <div class="scroll-cue">DESLIZA <span class="arrow">↓</span></div>
+  <div class="tc-readout">
+    <div class="tc mono" id="tcCounter">00:00:00:00</div>
+    <div class="lbl">TIMELINE / PORTAFOLIO</div>
+  </div>
 </div>
 
 <!-- ============ SOBRE MÍ ============ -->
