@@ -381,26 +381,16 @@
     font-size:13px;
     letter-spacing:0.05em;
   }
+  /* el cuadro de contenido propio reutiliza .bin-media, pero con borde
+     completo y una altura tope para no dominar la seccion */
   .content-visual{
-    aspect-ratio:4/5;
-    background:linear-gradient(160deg,#132420,#0a0f0e 70%);
+    aspect-ratio:9/16;
+    height:min(600px,78vh);
+    width:auto;
+    max-width:100%;
+    justify-self:center;
     border:1px solid var(--line);
-    position:relative;
-    overflow:hidden;
   }
-  .content-visual .tick{
-    position:absolute;left:18px;right:18px;
-    display:flex;justify-content:space-between;
-    font-size:10px;color:var(--muted);
-  }
-  .content-visual .tick.top{top:18px;}
-  .content-visual .tick.bottom{bottom:18px;}
-  .content-visual .label{
-    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    text-align:center;
-  }
-  .content-visual .label .n{font-family:'Bebas Neue';font-size:64px;color:var(--teal);opacity:0.85;}
-  .content-visual .label .s{font-size:11px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;}
 
   /* ---------- CONTACTO ---------- */
   .contact-inner{text-align:left;}
@@ -755,13 +745,14 @@
         <span class="social-pill">[ @tu_tiktok ]</span>
       </div>
     </div>
-    <div class="content-visual">
-      <div class="tick top mono"><span>00:00:00</span><span>REC ●</span></div>
-      <div class="label">
-        <div class="n display">01</div>
-        <div class="s">Errores de edición<br>para principiantes</div>
-      </div>
-      <div class="tick bottom mono"><span>PLAY</span><span>00:00:58</span></div>
+    <div class="content-visual bin-media" role="button" tabindex="0"
+         data-full="videos/contenido-propio.mp4"
+         data-poster="videos/contenido-propio.jpg"
+         aria-label="Reproducir video de contenido propio">
+      <video src="videos/contenido-propio-preview.mp4" poster="videos/contenido-propio.jpg"
+             autoplay muted loop playsinline preload="metadata"></video>
+      <span class="dur-chip">00:58</span>
+      <span class="play-badge"><span>▶ Ver completo</span></span>
     </div>
   </div>
 </section>
